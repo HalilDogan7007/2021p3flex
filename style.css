@@ -3,7 +3,10 @@ body{
 }
 
 .selectplayers{
-
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    top: 50px;
 
 }
 
@@ -19,7 +22,9 @@ body{
 
 }
 .ui{
-    margin-top: 2px;
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
 
 }
 .roll{
@@ -44,7 +49,8 @@ body{
 
 }
 .boardoverlay{
-    top: 0px;
+    top: 184px;
+    left: 664px;
     position: absolute;
     background-image: url(img/snakes.png);
     width: 600px;
@@ -78,4 +84,8 @@ body{
     height: 50px;
     background-color: rgb(252, 0, 189);
     color: rgb(51, 255, 10);
+}
+.winner
+{
+display:none;
 }

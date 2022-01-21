@@ -9,7 +9,10 @@ function init() {
 
 class Player {
     constructor() {
+        this.index
         this.atTile = 0;
+        this.pawn = document.getElementsByClassName("pawn" + index)[0];
+        this.pawn.style.display = "block";
     }
 }
 
@@ -48,8 +51,8 @@ class Game {
             0, 3, 3, 3, 3, 3, 3, 3, 3, 0,
             0, 1, 1, 1, 1, 1, 1, 1, 1, 1];
 
-        let x = 0;
-        let y = 10;
+        let x = 12;
+        let y = 12;
 
         let size = 55;
         for (var i = 0; i < path.length; i++) {
@@ -72,32 +75,80 @@ class Game {
         //let op! deze tegelnummers beginnen 1
         let goto = [[6, 14], [16, 4], [17, 23], [27, 33], [29, 10], [38, 43], [39, 20], [45, 34]];
 
-        for (var i = 0; i < goto.length; i++)
-        {
+        for (var i = 0; i < goto.length; i++) {
 
 
-        let element = goto[i];
-        console.log(element);
+            let element = goto[i];
 
-        let start = element[0] - 1;
-        let end = element[1] - 1;
+            let start = element[0] - 1;
+            let end = element[1] - 1;
 
-        let tile = this.tiles[start];
-        tile.goto = end;
-        } 
+            let tile = this.tiles[start];
+            tile.goto = end;
+        }
     }
 
     start(amountOfPlayers) {
+        this.selectplayersDiv.style.display = "none";
+        this.winnerDiv.style.display = "none";
+        this.mainDiv.style.display = "block";
+
+
+        let pawns = document.getElementsByClassName("pawn")
+        for (var i = 0; i < pawns.length; i++) {
+            pawns[i].style.display = "none"
+
+        }
+
+        this.players = [];
+
+        for (var i = 0; i < amountOfPlayers; i++) {
+            let player = new player (index);
+            this.players.push(player);
+        }
+
+
+        this.playerturn = -1;
+        this.moveToNextPlayer();
     }
 
-    moveToNextPlayer() {
+
+    moveToNextPlayer() 
+    {
+        this.playerturn++;
+        if (this.playerturn == this.players.length)
+        {
+            this.playerturn = 0;
+    
+        }
+
+        this.draw();
     }
+
+
+
+
+
     draw() {
+        for (var i = 0; i < this.platers.length; i++)
+        {
+            this.setPawn(i, this.players[i].atTile);
+        }
     }
 
     roll() {
+
     }
-    setPawn(playerI, atTile) {
+    setPawn(playerI, atTile) 
+    {
+        let tile = this.tiles[atTile];
+
+        let player = this.players[playerI];
+
+        player.pawn.style.left = tile.div.style.left;
+
+        player.pawn.style.top = tile.div.style.top;
+
 
     }
     makeBoardDiv(x, y, tileDisplayNumber) {
