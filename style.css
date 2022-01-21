@@ -13,6 +13,7 @@ body{
     height: 50px;
     background-color: aqua;
 }
+
 .main{
 
 
@@ -56,6 +57,7 @@ body{
     background-size: contain;
     width: 20px;
     height: 20px;
+    display: none;
 
 }
 .pawn0{
